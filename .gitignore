@@ -1,0 +1,7 @@
+# Local Claude Code configuration (personal/machine-specific)
+/.claude/
+/CLAUDE.md
+
+# OS-specific files
+.DS_Store
+Thumbs.db

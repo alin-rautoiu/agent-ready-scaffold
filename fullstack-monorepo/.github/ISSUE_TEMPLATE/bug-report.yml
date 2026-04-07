@@ -1,0 +1,99 @@
+name: Bug report
+description: Report a defect with evidence, proposed direction, and acceptance criteria.
+title: "[Bug][<scope>][<severity>] <short title>"
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Pick the matching severity label used in this repository.
+      options:
+        - critical
+        - major
+        - minor
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      description: Pick the primary scope label.
+      options:
+        - frontend
+        - backend
+        - testing
+        - ux
+        - accessibility
+        - localization
+        - security
+        - code-quality
+        - mobile
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is wrong right now?
+      placeholder: Describe the actual broken behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction / Context
+      description: How can someone reproduce this, or in what context does it occur?
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics / Evidence
+      description: Provide concrete evidence (files, logs, screenshots, tests).
+      placeholder: |
+        - File references:
+        - Runtime logs:
+        - Test evidence:
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed direction
+      description: Suggested implementation direction (not mandatory final solution).
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Verifiable completion criteria.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
