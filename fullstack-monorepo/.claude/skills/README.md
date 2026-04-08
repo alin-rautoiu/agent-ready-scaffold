@@ -49,3 +49,5 @@ Skills are not auto-loaded. If a skill is not referenced by an agent, it has no 
 
 - [Codex shell tips](https://developers.openai.com/blog/skills-shell-tips) — "When you're running a production workflow with a clear contract, just say: 'Use the skill.' This transforms fuzzy routing into explicit contracts." Scripted procedures with human-inspectable outputs outperform open-ended agent reasoning for repeatable work. "Put templates and examples inside the skill (they’re basically free when unused)"
 - 15 lessons learned building ChatGPT Apps: [Turning lessons into a Codex Skill](https://developers.openai.com/blog/15-lessons-building-chatgpt-apps#turning-lessons-into-a-codex-skill)
+- [Testing Agent Skills Systematically with Evals](https://developers.openai.com/blog/eval-skills)
+- [Skill Synthesis](https://cra.mr/skill-synthesis)
