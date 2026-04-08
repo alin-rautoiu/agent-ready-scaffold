@@ -32,3 +32,7 @@ Arguments can be referenced with `$ARGUMENTS` (e.g., `/commit fix login bug` →
 **Don't** inline business logic into command files. If a command needs more than a paragraph of instructions, promote the logic to an agent definition in `agents/`.
 
 **Don't** create commands for one-time tasks. Commands are for repeatable workflows used across multiple sessions.
+
+**Further Reading**:
+
+- MCP, Skills, and Agents: [Commands](https://cra.mr/mcp-skills-and-agents/#commands) — disputable if they're needed anymore. Copilot, at least, still finds a use for them.
