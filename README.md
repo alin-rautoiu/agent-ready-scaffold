@@ -30,6 +30,7 @@ Read `fullstack-monorepo/README.md` once before starting work. The do's and don'
 | Scaffold | Description |
 | --- | --- |
 | [`fullstack-monorepo/`](fullstack-monorepo/) | Full-stack monorepo template with backend API, frontend SPA, shared types, multi-agent orchestration loop, UX audit pipeline, and GitHub issue workflow |
+| [`revealjs-react-presentation/`](revealjs-react-presentation/) | RevealJS presentation template with Vite, React, TypeScript, PDF export, and mirrored agent surfaces for deck authoring workflows |
 
 ## Assumptions
 

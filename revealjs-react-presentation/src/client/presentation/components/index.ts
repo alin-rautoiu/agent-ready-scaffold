@@ -1,0 +1,7 @@
+export { DeckShell } from './DeckShell'
+export { EvidenceNote } from './EvidenceNote'
+export { ListItemWithSubs } from './ListItemWithSubs'
+export { NarrativeBand } from './NarrativeBand'
+export { QuotedFigure, type QuotedFigureProps } from './QuotedFigure'
+export { SlideFrame } from './SlideFrame'
+export { SlideHead, type IconName } from './SlideHead'
