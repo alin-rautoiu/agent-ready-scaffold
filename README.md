@@ -21,7 +21,7 @@ Initialization is split across two files:
 
 **[INIT-SCAFFOLD.md](INIT-SCAFFOLD.md)** — The detailed setup script. Asks 13 questions about your project and works through 12 transformation TODOs: filling template placeholders, populating DESIGN.md, configuring commands, removing unused agent surfaces, and optionally scaffolding the initial source tree.
 
-If you prefer to do it manually: copy `fullstack-monorepo/` into your project root and work through each `<!-- TODO: ... -->` placeholder in the knowledge files. Read INIT.md to understand the canonical surface decision before touching anything in `.claude/`, `.github/`, `.codex/`, or `.agents/`.
+If you prefer to do it manually: copy `fullstack-monorepo/` into your project root and work through each `<!-- TODO: ... -->` placeholder in the knowledge files. Read INIT.md to understand the canonical surface decision before touching anything in `.claude/`, `.github/`, `.codex/`, or `.gemini/`.
 
 Read `fullstack-monorepo/README.md` once before starting work. The do's and don'ts are short; the failures they describe are not.
 
@@ -44,7 +44,7 @@ This scaffold was written with a specific setup in mind: Claude Code used in VS 
 | --- | --- |
 | **GitHub Copilot** | Use `.github/agents/*.agent.md` — these are maintained mirrors of the Claude agents with Copilot-specific front matter. The agent loop works the same way; the Orchestrator, Implementation Lead, and Code Review agents are all present. Run `INIT.md` with Copilot as the agent. |
 | **OpenAI Codex** | Use `.codex/skills/agent-*/SKILL.md` — Codex skill format mirrors of the same agents. |
-| **Gemini Code Assist** | Use `GEMINI.md` and `.agents/` — Gemini context files with the same conventions. Gemini does not have a sub-agent primitive; read `.claude/agents/README.md` to understand the loop design and adapt it to focused chat sessions. |
+| **Gemini Code Assist** | Use `GEMINI.md` and `.gemini/` — Gemini context files with the same conventions. Gemini does not have a sub-agent primitive; read `.claude/agents/README.md` to understand the loop design and adapt it to focused chat sessions. |
 | **Multiple agents on the same team** | All four surfaces are maintained in parallel. `.claude/agents/` remains the source of truth. When you update an agent definition, propagate the change to the other three surfaces (see `CLAUDE.md` for the sync policy). |
 
 The do's and don'ts in `fullstack-monorepo/README.md` are agent-agnostic. Every rule applies regardless of which tool you use.
@@ -112,7 +112,7 @@ your-scaffold/
 ├── INIT.md            # Initialization prompt (copy from root and adapt paths)
 ├── .claude/           # Claude Code config (agents, skills, hooks, commands)
 ├── .github/           # GitHub Copilot config (agents, prompts, workflows)
-├── .agents/           # Gemini Code Assist context
+├── .gemini/           # Gemini Code Assist context
 ├── .codex/            # OpenAI Codex config
 └── src/               # Application source
 ```

@@ -36,7 +36,7 @@ If the stack is ambiguous, default to PowerShell on Windows and Bash on macOS/Li
 | Tier | Severity label | Files matched |
 | --- | --- | --- |
 | 1 — Agent runtime | `[CRITICAL]` | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `DESIGN.md`, `.claude/agents/*.md`, `.github/agents/*.agent.md`, `.codex/skills/agent-*/SKILL.md` |
-| 2 — Agent capabilities | `[WARN]` | `.claude/skills/**`, `.agents/skills/**`, `.codex/skills/**`, `.github/copilot-instructions.md`, `README.md` |
+| 2 — Agent capabilities | `[WARN]` | `.claude/skills/**`, `.gemini/skills/**`, `.codex/skills/**`, `.github/copilot-instructions.md`, `README.md` |
 | 3 — Peripheral docs | `[INFO]` | `src/**`, `tests/**`, `scripts/**`, `docs/**`, `templates/**`, `knowledge/**`, `memories/**` |
 
 Tier 1 files are read by agents at runtime. Unfilled TODOs in these files silently degrade every agentic task. Tier 2 files reduce agent capability. Tier 3 files are documentation only and safe to fill incrementally.

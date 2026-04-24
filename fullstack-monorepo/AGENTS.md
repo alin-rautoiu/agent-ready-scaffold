@@ -128,9 +128,9 @@ Agent definitions live in four directories, one per coding-assistant runtime:
 | Claude Code | `.claude/agents/*.md` | `tools: Read, Glob, ...` (comma string) |
 | GitHub Copilot | `.github/agents/*.agent.md` | `tools:` YAML list + `target: vscode` |
 | Codex | `.codex/skills/agent-*/SKILL.md` | Codex-native skill format |
-| Gemini Code Assist (VS Code) | `GEMINI.md` + `.agents/**/*.md` | Gemini context files and reusable markdown playbooks |
+| Gemini Code Assist (VS Code) | `GEMINI.md` + `.gemini/**/*.md` | Gemini context files and reusable markdown playbooks |
 
-**Source of truth:** `.claude/agents/`. When an agent is added or updated, propagate the change to `.github/agents/`, `.codex/skills/agent-*/`, and the Gemini Code Assist surface (`GEMINI.md` plus any referenced `.agents/` files) so all four stay at feature parity. Frontmatter format differs by runtime — only the body content must match semantically. Current canonical agents: Orchestrator, Implementation Lead, Code Review, Atomic Commit, UX Audit, Issues Workflow.
+**Source of truth:** `.claude/agents/`. When an agent is added or updated, propagate the change to `.github/agents/`, `.codex/skills/agent-*/`, and the Gemini Code Assist surface (`GEMINI.md` plus any referenced `.gemini/` files) so all four stay at feature parity. Frontmatter format differs by runtime — only the body content must match semantically. Current canonical agents: Orchestrator, Implementation Lead, Code Review, Atomic Commit, UX Audit, Issues Workflow.
 
 **Runtime capabilities differ.** Agents that use browser automation, shell commands, or external CLIs must adapt tool references per runtime:
 

@@ -96,7 +96,7 @@ Agent definitions live in four directories, one per coding-assistant runtime:
 | Claude Code | `.claude/agents/*.md` | Canonical source of truth |
 | GitHub Copilot | `.github/agents/*.agent.md` | VS Code mirror |
 | Codex | `.codex/skills/agent-*/SKILL.md` | Codex skill mirror |
-| Gemini Code Assist | `GEMINI.md` + `.agents/workflows/*.md` | Gemini mirror |
+| Gemini Code Assist | `GEMINI.md` + `.gemini/workflows/*.md` | Gemini mirror |
 
 **Source of truth:** `.claude/agents/`. When an agent changes, propagate the same behavior to the other runtime surfaces and keep tool references aligned to the target runtime.
 

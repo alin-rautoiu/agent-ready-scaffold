@@ -214,7 +214,7 @@ For each runtime **not** listed in Q8, delete its directory. There is no value i
 - Claude Code not in Q8: delete `fullstack-monorepo/.claude/` entirely.
 - GitHub Copilot not in Q8: delete `fullstack-monorepo/.github/agents/`. Keep `fullstack-monorepo/.github/workflows/` if CI/CD is configured there.
 - OpenAI Codex not in Q8: delete `fullstack-monorepo/.codex/`.
-- Gemini Code Assist not in Q8: delete `fullstack-monorepo/.agents/` and remove `fullstack-monorepo/GEMINI.md`.
+- Gemini Code Assist not in Q8: delete `fullstack-monorepo/.gemini/` and remove `fullstack-monorepo/GEMINI.md`.
 
 **Verify active surfaces:**
 

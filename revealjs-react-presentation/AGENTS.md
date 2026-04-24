@@ -87,7 +87,7 @@ Agent definitions live in four directories, one per runtime:
 | Claude Code | `.claude/agents/*.md` | Canonical |
 | GitHub Copilot | `.github/agents/*.agent.md` | Mirror |
 | Codex | `.codex/skills/agent-*/SKILL.md` | Mirror |
-| Gemini Code Assist | `GEMINI.md` + `.agents/workflows/*.md` | Mirror |
+| Gemini Code Assist | `GEMINI.md` + `.gemini/workflows/*.md` | Mirror |
 
 **Source of truth:** `.claude/agents/`. Keep mirrors semantically aligned after every edit.
 

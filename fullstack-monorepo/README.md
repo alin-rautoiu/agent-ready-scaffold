@@ -25,7 +25,7 @@ The rules below are specific to this fullstack web architecture. For architectur
 | --- | --- |
 | `.claude/` | Claude Code agent config (canonical source of truth) |
 | `.github/` | GitHub Copilot config + CI/CD workflows |
-| `.agents/` | Gemini Code Assist context |
+| `.gemini/` | Gemini Code Assist context |
 | `.codex/` | OpenAI Codex config |
 | <!-- TODO: backend path, e.g.: `src/server/` --> | Backend: routes/controllers, services, DB access, middleware |
 | <!-- TODO: frontend path, e.g.: `src/client/` --> | Frontend: components, pages, data fetching |
@@ -148,6 +148,6 @@ Agent definitions live in `.claude/agents/` and are the canonical source of trut
 
 1. `.github/agents/` — GitHub Copilot (adapt tool syntax for PowerShell)
 2. `.codex/skills/` — OpenAI Codex (use Codex skill format)
-3. `.agents/` — Gemini Code Assist (plain markdown context files)
+3. `.gemini/` — Gemini Code Assist (plain markdown context files)
 
 See [CLAUDE.md](CLAUDE.md) for the full agent sync policy and runtime capability table.

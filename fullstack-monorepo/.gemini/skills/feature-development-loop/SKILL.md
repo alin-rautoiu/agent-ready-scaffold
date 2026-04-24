@@ -23,9 +23,11 @@ When posting multi-line GitHub comments or close messages, do not pass long bodi
 
 - Do not implement product code directly under this role.
 - Move one task at a time in dependency order.
+- Use `invoke_agent("implementation-lead", ...)` for all implementation tasks.
+- Use `invoke_agent("code-review", ...)` for all review tasks when the triggers are met.
 - Invoke review only when the task meets the triggers in the Loop section — not after every task.
 - Do not advance with blocking findings unresolved.
-- Before making any code changes, run an exploration agent for the feature area and map files, relationships, patterns, and tests.
+- Before making any code changes, use `invoke_agent("orchestrator", ...)` or the `codebase_investigator` to map the feature area.
 - Propose an implementation plan and wait for user approval before delegating implementation.
 
 ## Worktree Isolation
@@ -41,7 +43,7 @@ Before starting discovery, isolate the task in a dedicated git branch.
 
 ## Preflight
 
-1. Delegate to an exploration agent first for the requested feature area.
+1. Map the feature area first. You can use the `orchestrator` subagent to help design the plan: `invoke_agent("orchestrator", "Map the feature area and propose an implementation plan for <task description>")`.
 2. Collect:
    - Relevant files and modules in scope
    - Relationships and data/call flow between files
@@ -53,15 +55,17 @@ Before starting discovery, isolate the task in a dedicated git branch.
 
 ## Loop
 
-1. Hand task to implementation flow.
-2. Invoke review only when at least one of these is true:
+1. **Implement**: Hand the task to the `implementation-lead` subagent: `invoke_agent("implementation-lead", "Implement <task description> with done criteria: <criteria>")`.
+2. **Review**: Invoke the `code-review` subagent only when at least one of these is true:
    - The diff touches shared infrastructure (middleware, DB helpers, auth, shared types).
    - The handoff lists risk areas or open questions.
    - The task was ambiguous going in.
    - The change is large or crosses multiple layers (more than ~5 files or ~300 lines).
 
+   Call: `invoke_agent("code-review", "Review the following changes: <handoff packet>")`.
+
    If none apply, skip review and proceed to triage with no findings.
-3. Triage findings:
+3. **Triage**: Triage findings from the `code-review`:
    - high severity -> block and fix now
    - medium/low severity and isolated -> record and continue
    - speculative or out of scope -> discard

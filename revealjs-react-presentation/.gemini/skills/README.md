@@ -1,4 +1,4 @@
-# .agents/skills/
+# .gemini/skills/
 
 Reusable Gemini-facing context files for this presentation scaffold.
 

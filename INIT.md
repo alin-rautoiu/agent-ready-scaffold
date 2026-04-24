@@ -93,7 +93,7 @@ Proceed to `INIT-SCAFFOLD.md` and follow its instructions as written.
 
 ### D — Gemini Code Assist
 
-**Your canonical surface:** `GEMINI.md` and `.agents/skills/`. These files are now the source of truth. If Claude Code is used by anyone on the team, `.claude/agents/` becomes a mirror. If nobody uses Claude Code, `.claude/` can be deleted (TODO 6 in `INIT-SCAFFOLD.md` handles this).
+**Your canonical surface:** `GEMINI.md` and `.gemini/skills/`. These files are now the source of truth. If Claude Code is used by anyone on the team, `.claude/agents/` becomes a mirror. If nobody uses Claude Code, `.claude/` can be deleted (TODO 6 in `INIT-SCAFFOLD.md` handles this).
 
 **What is unavailable:** Hooks, slash commands, and sub-agents. No dedicated sub-agent primitive. Run each agent role as a separate focused chat.
 
@@ -103,19 +103,19 @@ Proceed to `INIT-SCAFFOLD.md` and follow its instructions as written.
 2. Update `fullstack-monorepo/GEMINI.md` at the top, immediately after the `# GEMINI.md` heading:
 
    ```markdown
-   > **Canonical source.** This file and `.agents/` are the source of truth. Propagate changes to `.claude/agents/` if Claude Code is used by anyone on the team.
+   > **Canonical source.** This file and `.gemini/` are the source of truth. Propagate changes to `.claude/agents/` if Claude Code is used by anyone on the team.
    ```
 
 3. Update `fullstack-monorepo/CLAUDE.md` at the top, immediately after the `# CLAUDE.md` heading:
 
    ```markdown
-   > **Mirror.** Primary agent: Gemini Code Assist. Canonical definitions: `GEMINI.md` and `.agents/`. Edit there first; propagate here only if Claude Code is in use on this project.
+   > **Mirror.** Primary agent: Gemini Code Assist. Canonical definitions: `GEMINI.md` and `.gemini/`. Edit there first; propagate here only if Claude Code is in use on this project.
    ```
 
 **Adapt `INIT-SCAFFOLD.md` as you work through it:**
 
 - Shell syntax → PowerShell (Windows) or Bash (macOS/Linux) based on Q5
-- Any step referencing the Agent tool or sub-agents → separate focused chat with the relevant `.agents/skills/` file loaded
+- Any step referencing the Agent tool or sub-agents → separate focused chat with the relevant `.gemini/skills/` file loaded
 - Any step referencing `.claude/hooks/` or `.claude/commands/` → skip
 
 **Then proceed to `INIT-SCAFFOLD.md`.**

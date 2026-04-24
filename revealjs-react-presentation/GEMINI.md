@@ -52,5 +52,5 @@ npm run setup:browsers
 ## References
 
 - See `CLAUDE.md` for the main architecture notes and conventions.
-- See `.agents/workflows/` for Gemini-adapted agent role instructions.
-- See `.agents/skills/` for reusable reveal authoring and repo pattern guidance.
+- See `.gemini/workflows/` for Gemini-adapted agent role instructions.
+- See `.gemini/skills/` for reusable reveal authoring and repo pattern guidance.

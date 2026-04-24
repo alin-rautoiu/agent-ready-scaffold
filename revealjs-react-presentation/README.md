@@ -61,7 +61,7 @@ This scaffold is for presentation authoring, not for a talk-specific repository 
 | `.claude/` | Canonical Claude Code surface |
 | `.github/` | GitHub Copilot mirrors |
 | `.codex/` | OpenAI Codex mirrors |
-| `.agents/` | Gemini Code Assist mirrors |
+| `.gemini/` | Gemini Code Assist mirrors |
 
 ## Customization checklist
 

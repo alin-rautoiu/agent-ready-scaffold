@@ -69,10 +69,10 @@ Single test file:
 Gemini Code Assist in VS Code does not use the old Antigravity plugin layout. The repository-local Gemini surface is:
 
 - `GEMINI.md`: root workspace instructions for Gemini Code Assist.
-- `.agents/skills/**/SKILL.md`: reusable task playbooks.
-- `.agents/workflows/*.md`: focused workflow recipes.
+- `.gemini/skills/**/SKILL.md`: reusable task playbooks.
+- `.gemini/workflows/*.md`: focused workflow recipes.
 
-Use `.agents/README.md`, `.agents/skills/INDEX.md`, and `.agents/workflows/INDEX.md` as discovery entrypoints before loading a more specific file.
+Use `.gemini/README.md`, `.gemini/skills/INDEX.md`, and `.gemini/workflows/INDEX.md` as discovery entrypoints before loading a more specific file.
 
 ## Agent Mapping
 
@@ -86,19 +86,31 @@ Canonical agent behavior still lives in `.claude/agents/`. When a task maps to o
 - Issues Workflow: `.claude/agents/issues-workflow.md`
 <!-- TODO: Add any project-specific agents. -->
 
-Gemini Code Assist does not have a checked-in per-agent manifest in this repo and should not recreate the old `.agents/plugins/*/agents` structure. Emulate the requested role by reading the relevant markdown instructions and executing them within the current Gemini agent chat.
+Gemini Code Assist does not have a checked-in per-agent manifest in this repo and should not recreate the old `.gemini/plugins/*/agents` structure. Emulate the requested role by reading the relevant markdown instructions and executing them within the current Gemini agent chat.
 
 ## Task Routing
 
-- Multi-step delivery or backlog execution: read `.claude/agents/orchestrator.md`, then load only the specific `.agents/skills/` files needed for the task.
+- Multi-step delivery or backlog execution: read `.claude/agents/orchestrator.md`, then load only the specific `.gemini/skills/` files needed for the task.
 - Direct implementation: read `.claude/agents/implementation-lead.md`.
 - Review requests: read `.claude/agents/code-review.md`.
-- UX audits: read `.claude/agents/ux-audit.md`, then load only the relevant `.agents/skills/ux-audit-*.md` files.
-- Git workflows and careful commits: read `.agents/skills/safe-git-operations/SKILL.md`.
-- Issue workflow tasks: read `.agents/skills/issues-workflow-orchestrator/SKILL.md`.
+- UX audits: read `.claude/agents/ux-audit.md`, then load the `.gemini/skills/ux-audit/` skill.
+- Git workflows and careful commits: read `.gemini/skills/safe-git-operations/SKILL.md`.
+- Issue workflow tasks: read `.gemini/skills/issues-workflow-orchestrator/SKILL.md`.
 <!-- TODO: Add any project-specific task routing rules. -->
 
 Do not bulk-read every skill file. Load only the files that match the task.
+
+## Custom Subagents
+
+This project defines specialized subagents in `.gemini/agents/` to handle specific roles in the development lifecycle:
+
+- `orchestrator`: Coordinating multi-step technical delivery and planning.
+- `implementation-lead`: Implementing scoped technical tasks and adding tests.
+- `code-review`: Reviewing code changes for bugs, regressions, and risks.
+- `ux-audit`: Strategic UX evaluation of workflows and pages.
+- `issues-workflow`: Backlog management and ranked issue execution.
+
+Invoke them using `invoke_agent("<name>", "...")` when following the `feature-development-loop` skill or when you need a specialized perspective.
 
 ## Tooling Notes
 

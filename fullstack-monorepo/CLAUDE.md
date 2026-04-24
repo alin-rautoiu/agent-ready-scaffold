@@ -177,7 +177,7 @@ Run the full suite and single-file commands are in the **Commands** section abov
 
 ### Agent sync policy
 
-**Source of truth:** `.claude/agents/`. Propagate changes to `.github/agents/`, `.codex/skills/agent-*/`, and the Gemini Code Assist surface (`GEMINI.md` plus any referenced `.agents/` files). Frontmatter format differs by runtime — only the body content must match semantically. When propagating, adapt tool-specific instructions to use the target runtime's equivalent tools. See `AGENTS.md` for the full runtime table. Canonical agents: Orchestrator, Implementation Lead, Code Review, <!-- TODO: add any project-specific agents. e.g.: "Atomic Commit, UX Audit, Issues Workflow." -->
+**Source of truth:** `.claude/agents/`. Propagate changes to `.github/agents/`, `.codex/skills/agent-*/`, and the Gemini Code Assist surface (`GEMINI.md` plus any referenced `.gemini/` files). Frontmatter format differs by runtime — only the body content must match semantically. When propagating, adapt tool-specific instructions to use the target runtime's equivalent tools. See `AGENTS.md` for the full runtime table. Canonical agents: Orchestrator, Implementation Lead, Code Review, <!-- TODO: add any project-specific agents. e.g.: "Atomic Commit, UX Audit, Issues Workflow." -->
 
 **Runtime capabilities differ.** Agents that use browser automation, shell commands, or external CLIs must adapt tool references per runtime:
 

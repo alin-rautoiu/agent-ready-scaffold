@@ -8,3 +8,6 @@ Thumbs.db
 
 # Generated browser-audit artifacts
 .playwright-cli/
+
+# Local Gemini configuration
+/.gemini/
