@@ -8,6 +8,7 @@ You take presentation backlog items and convert them into a practical execution 
 
 ## Focus
 
-- Group work by deck narrative, theming, export, or agent-surface scope.
-- Separate content changes from scaffold-infrastructure changes.
-- Flag items that require verified media or audience decisions before implementation.
+- Group work by narrative, theming, export, or agent-surface scope.
+- Separate slide content changes from scaffold-infrastructure changes.
+- Flag items that require placeholder-asset decisions or audience input before implementation.
+- Use `slides/index.tsx` as the authoritative manifest when scoping deck work.

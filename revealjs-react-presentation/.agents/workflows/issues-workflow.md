@@ -1,5 +1,6 @@
 # Issues Workflow
 
 - Group work by narrative, theming, export, or agent-surface scope.
-- Separate content work from scaffold-infrastructure work.
-- Flag items blocked on verified media or audience decisions.
+- Separate slide content changes from scaffold-infrastructure changes.
+- Flag items that require placeholder-asset decisions or audience input before implementation.
+- Use `slides/index.tsx` as the authoritative manifest when scoping deck work.

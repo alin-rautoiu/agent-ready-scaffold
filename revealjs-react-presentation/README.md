@@ -30,13 +30,14 @@ This scaffold is for presentation authoring, not for a talk-specific repository 
 
 ## Authoring flow
 
-1. Update the starter deck metadata and slide titles.
-2. Replace or reorder modules in [slides/index.tsx](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/slides/index.tsx).
-3. Keep Reveal config in [PresentationApp.tsx](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/PresentationApp.tsx) and keep slide content inside the slide modules.
-4. Extend shared presentation primitives in [components](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/components) before introducing ad hoc markup across many slides.
-5. Adjust CSS variables and layout rules in [presentation.css](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/theme/presentation.css).
-6. Replace placeholder assets in [assets](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/assets) with verified media.
-7. Run `npm run test` and `npm run export:pdf` before treating the deck as ready for review.
+1. **Plan the deck first.** Run the `/plan-deck` slash command (or invoke the Deck Planner agent) to produce [docs/deck-plan.md](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/docs/deck-plan.md). The planner accepts a PDF source, a markdown source, or runs an interactive interview. The plan is the "what to build" spec consumed by the rest of the agent pipeline.
+2. Update the starter deck metadata and slide titles to match the plan.
+3. Replace or reorder modules in [slides/index.tsx](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/slides/index.tsx) so each implemented slide lines up with a `## Slide: <id>` entry in `docs/deck-plan.md`.
+4. Keep Reveal config in [PresentationApp.tsx](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/PresentationApp.tsx) and keep slide content inside the slide modules. Use `ThemedSlide` from [components](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/components) as the slide wrapper so the deck-level theme applies.
+5. Extend shared presentation primitives in [components](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/components) before introducing ad hoc markup across many slides.
+6. Adjust CSS variables and layout rules in [presentation.css](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/theme/presentation.css); pick a deck default from [theme-neon-dusk.css](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/theme/theme-neon-dusk.css) / [theme-natural-light.css](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/theme/theme-natural-light.css) / [theme-classical.css](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/theme/theme-classical.css) by passing the `theme` prop to `PresentationApp`.
+7. Replace placeholder assets in [assets](/c:/Workspace/agent-ready-scaffold/revealjs-react-presentation/src/client/presentation/assets) with verified media.
+8. Run `npm run test` and `npm run export:pdf` before treating the deck as ready for review.
 
 ## Speaker notes and export
 

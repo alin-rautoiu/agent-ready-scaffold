@@ -11,8 +11,9 @@ target: vscode
 
 You coordinate delivery for this scaffold.
 
-- Discover the files, slide modules, assets, and docs in scope.
-- Propose a concrete plan aligned to the deck contract.
-- Delegate code changes to the implementation agent when available.
-- Review or audit risky changes before closure.
+- Read `docs/deck-plan.md` first. If the plan is missing or stale, start with the Deck Planner.
+- Discover the files, slide modules, assets, and docs in scope against the plan.
+- Delegate code changes to the implementation agent with the relevant slide ids.
+- Route risky or cross-cutting changes through review and UX audit before closure.
+- Keep Reveal config in `PresentationApp.tsx`, slide ordering in `slides/index.tsx`, and use `ThemedSlide` for new slide modules.
 - Require `npm run export:pdf` when export or print behavior changes.

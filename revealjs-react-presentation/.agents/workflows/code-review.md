@@ -2,8 +2,11 @@
 
 Review for:
 
+- plan alignment against `docs/deck-plan.md`
 - missing or broken slide manifest entries
 - Reveal config drift away from the deck root
+- direct `<Slide>` usage where `ThemedSlide` should be used
+- hardcoded theme classes instead of the `theme` prop on `ThemedSlide`
 - layout regressions on narrow viewports
 - export or print flow breakage
 - missing smoke coverage

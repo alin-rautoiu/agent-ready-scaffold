@@ -35,6 +35,14 @@ npm run export:pdf
 npm run setup:browsers
 ```
 
+## Planning workflow
+
+- Treat `docs/deck-plan.md` as the deck spec.
+- Start with the Deck Planner workflow when the requested slides are not already planned.
+- Implement against the relevant slide ids and keep `slides/index.tsx` aligned with the plan.
+- Use `ThemedSlide` for new slide modules so the deck-level theme applies.
+- Route layout, theme, and export changes through review and UX audit.
+
 ## Runtime
 
 - GitHub Copilot and Gemini Code Assist typically run PowerShell on Windows.

@@ -6,5 +6,5 @@ Gemini Code Assist mirrors for this presentation scaffold.
 
 | Path | Purpose |
 | --- | --- |
-| `workflows/` | Gemini-adapted agent role instructions |
-| `skills/` | Reusable reveal and repo-pattern guidance |
+| `workflows/` | Gemini-adapted agent role instructions, including Deck Planner |
+| `skills/` | Reusable planning, reveal, repo-pattern, and browser-QA guidance |

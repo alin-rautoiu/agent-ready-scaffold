@@ -100,7 +100,19 @@ Agent definitions live in four directories, one per coding-assistant runtime:
 
 **Source of truth:** `.claude/agents/`. When an agent changes, propagate the same behavior to the other runtime surfaces and keep tool references aligned to the target runtime.
 
+## Planning workflow
+
+The scaffold separates "what to build" (the plan) from "how to build" (the skills) and "what is built" (the slide modules).
+
+1. **Plan** — `docs/deck-plan.md` is the spec. Generate or update it with the **Deck Planner** agent or the `/plan-deck` slash command. Inputs: a PDF source, a markdown source, or interactive Q&A.
+2. **Implement** — the **Orchestrator** reads the plan and delegates slides to the **Implementation Lead**, which maps plan entries to slide modules under `src/client/presentation/slides/`.
+3. **Review** — **Code Review** and **UX Audit** verify that implementation matches the plan and meets the visual bar. Plan drift is surfaced, not silently reconciled.
+
+Do not start slide implementation without a plan entry for the target slide. If the plan is wrong, update the plan first.
+
 ## Specialized workflows
 
+- Deck planning schema and source-ingestion: `.claude/skills/deck-planning/SKILL.md`
 - Reveal authoring guidance: `.claude/skills/revealjs-presentation-improvement/SKILL.md`
 - Shared repo conventions: `.claude/skills/repo-patterns/SKILL.md`
+- Browser automation for visual QA: `.claude/skills/playwright-cli/SKILL.md`

@@ -11,9 +11,10 @@ Use these patterns when editing the presentation scaffold.
 
 ## Deck-specific guidance
 
-- Keep Reveal config at the deck boundary.
+- Keep Reveal config at the deck boundary (`PresentationApp.tsx`).
 - Keep slide content declarative. Avoid imperative DOM manipulation inside slides.
-- Use `Stack`, `Slide`, `Fragment`, and `Code` before inventing custom equivalents.
+- Use `ThemedSlide` from `components/` as the slide wrapper so the deck-level theme applies. Use `Stack`, `Fragment`, and `Code` from `@revealjs/react` before inventing custom equivalents.
+- Use `useDeckTheme()` from `components/DeckThemeContext.ts` only when a component needs to read the active theme string (rarely — composition via CSS class is the primary mechanism).
 
 ## Testing
 

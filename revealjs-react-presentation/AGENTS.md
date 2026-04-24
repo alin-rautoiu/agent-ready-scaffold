@@ -90,3 +90,13 @@ Agent definitions live in four directories, one per runtime:
 | Gemini Code Assist | `GEMINI.md` + `.agents/workflows/*.md` | Mirror |
 
 **Source of truth:** `.claude/agents/`. Keep mirrors semantically aligned after every edit.
+
+## Planning workflow
+
+Treat `docs/deck-plan.md` as the spec for what to build.
+
+1. Plan the deck first with the Deck Planner workflow or the `/plan-deck` command.
+2. Implement against the relevant plan entries under `src/client/presentation/slides/`.
+3. Route review through Code Review and UX Audit when the change can drift from the plan, affect theme rendering, or affect PDF export.
+
+Do not start slide implementation without a plan entry for the target slide.
