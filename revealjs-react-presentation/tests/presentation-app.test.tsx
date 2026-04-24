@@ -40,7 +40,9 @@ describe('PresentationApp', () => {
       'fragments',
       'vertical-stack',
       'code',
-      'media',
+      'enumeration',
+      'thesis',
+      'themes',
       'closing',
     ])
   })

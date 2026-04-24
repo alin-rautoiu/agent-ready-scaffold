@@ -1,5 +1,5 @@
-import { Code, Slide } from '@revealjs/react'
-import { EvidenceNote, SlideFrame } from '../components'
+import { Code } from '@revealjs/react'
+import { EvidenceNote, SlideFrame, ThemedSlide } from '../components'
 
 const AUTHORING_SNIPPET = `import type { SlideModule } from './slides'
 import { TitleSlide } from './TitleSlide'
@@ -12,14 +12,14 @@ export const slideManifest: SlideModule[] = [
 
 export function CodeExampleSlide() {
   return (
-    <Slide className="slide slide--code" notes="Explain that the manifest is the stable entry contract for authors.">
+    <ThemedSlide className="slide slide--code" notes="Explain that the manifest is the stable entry contract for authors.">
       <SlideFrame
         kicker="Code"
         title="Keep the manifest simple and explicit."
         keyMessage="The deck root owns Reveal configuration; the manifest owns ordering."
       >
         <div className="card-grid card-grid--two">
-          <section className="card card--wide">
+          <div className="card card--wide">
             <h3>Ordered slide manifest</h3>
             <Code language="tsx" trim lineNumbers="1-2|4-5|7-10">
               {AUTHORING_SNIPPET}
@@ -30,17 +30,17 @@ export function CodeExampleSlide() {
               primary="Ordered deck contract"
               secondary="src/client/presentation/slides/index.tsx"
             />
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>Why this pattern scales</h3>
             <ul>
               <li>Authors can reorder slides without touching Reveal config.</li>
               <li>Shared shell components keep spacing and hierarchy consistent.</li>
               <li>Tests can smoke-check the manifest without booting a whole export flow.</li>
             </ul>
-          </section>
+          </div>
         </div>
       </SlideFrame>
-    </Slide>
+    </ThemedSlide>
   )
 }

@@ -2,9 +2,11 @@ import type { ComponentType, ReactNode } from 'react'
 import { AgendaSlide } from './AgendaSlide'
 import { ClosingSlide } from './ClosingSlide'
 import { CodeExampleSlide } from './CodeExampleSlide'
+import { EnumerationExampleSlide } from './EnumerationExampleSlide'
 import { FragmentExampleSlide } from './FragmentExampleSlide'
-import { MediaExampleSlide } from './MediaExampleSlide'
 import { StackExampleSlides } from './StackExampleSlides'
+import { ThemeShowcaseSlides } from './ThemeShowcaseSlides'
+import { ThesisExampleSlide } from './ThesisExampleSlide'
 import { TitleSlide } from './TitleSlide'
 
 export type SlideModule = {
@@ -18,7 +20,9 @@ export const slideManifest: SlideModule[] = [
   { id: 'fragments', render: FragmentExampleSlide },
   { id: 'vertical-stack', render: StackExampleSlides },
   { id: 'code', render: CodeExampleSlide },
-  { id: 'media', render: MediaExampleSlide },
+  { id: 'enumeration', render: EnumerationExampleSlide },
+  { id: 'thesis', render: ThesisExampleSlide },
+  { id: 'themes', render: ThemeShowcaseSlides },
   { id: 'closing', render: ClosingSlide },
 ]
 

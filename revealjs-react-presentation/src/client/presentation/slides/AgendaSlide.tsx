@@ -1,9 +1,9 @@
-import { Fragment, Slide } from '@revealjs/react'
-import { ListItemWithSubs, SlideHead } from '../components'
+import { Fragment } from '@revealjs/react'
+import { Citation, Emph, ListItemWithSubs, SlideHead, ThemedSlide } from '../components'
 
 export function AgendaSlide() {
   return (
-    <Slide className="slide slide--context" notes="Explain the deck shape and how authors should add or split slides.">
+    <ThemedSlide className="slide slide--context" notes="Explain the deck shape and how authors should add or split slides.">
       <div className="slide-frame">
         <SlideHead
           icon="scope"
@@ -14,23 +14,30 @@ export function AgendaSlide() {
           Use the first deck as a reference implementation for pacing, layout, and evidence hygiene.
         </p>
         <div className="slide-frame__body card-grid card-grid--two">
-          <section className="card">
+          <div className="card">
             <h3>What this scaffold includes</h3>
             <ul>
               <li>Ordered slide manifest under <code>slides/index.tsx</code></li>
-              <li>Shared frame component for consistent slide structure</li>
+              <li>
+                Shared <Emph tone="primary">frame component</Emph> for consistent slide structure
+              </li>
               <li>Export path for print-to-PDF delivery</li>
-              <li>Agent docs and reusable authoring skills</li>
+              <li>
+                Agent docs and reusable authoring skills
+                <Citation author="Scaffold" year="2026" locator="§agents" />
+              </li>
             </ul>
-          </section>
-          <section className="card">
+          </div>
+          <div className="card">
             <h3>What authors should replace first</h3>
             <ul>
               <Fragment asChild>
                 <li>Deck title, audience, and speaker notes</li>
               </Fragment>
               <Fragment asChild>
-                <li>Theme variables and visual language</li>
+                <li>
+                  <Emph tone="accent">Theme variables</Emph> and visual language
+                </li>
               </Fragment>
               <Fragment asChild>
                 <li>Slide modules that do not fit the talk</li>
@@ -43,9 +50,9 @@ export function AgendaSlide() {
                 <li>Introduce custom components only after a pattern repeats.</li>
               </ListItemWithSubs>
             </ul>
-          </section>
+          </div>
         </div>
       </div>
-    </Slide>
+    </ThemedSlide>
   )
 }

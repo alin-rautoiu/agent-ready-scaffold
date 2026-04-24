@@ -2,6 +2,7 @@ import { Deck } from '@revealjs/react'
 import { useEffect, useState } from 'react'
 import RevealHighlight from 'reveal.js/plugin/highlight'
 import RevealNotes from 'reveal.js/plugin/notes'
+import { DeckThemeContext } from './components'
 import { slideManifest } from './slides'
 
 const DESKTOP_CONFIG = {
@@ -20,7 +21,11 @@ const NARROW_CONFIG = {
   maxScale: 1.4,
 }
 
-export function PresentationApp() {
+type PresentationAppProps = {
+  theme?: string
+}
+
+export function PresentationApp({ theme = 'theme-neon-dusk' }: PresentationAppProps = {}) {
   const [isNarrowViewport, setIsNarrowViewport] = useState(false)
 
   useEffect(() => {
@@ -36,25 +41,27 @@ export function PresentationApp() {
   const sizeConfig = isNarrowViewport ? NARROW_CONFIG : DESKTOP_CONFIG
 
   return (
-    <Deck
-      config={{
-        hash: true,
-        controls: true,
-        progress: true,
-        center: false,
-        navigationMode: 'linear',
-        transition: 'slide',
-        transitionSpeed: 'fast',
-        backgroundTransition: 'fade',
-        slideNumber: 'c/t',
-        autoAnimate: false,
-        ...sizeConfig,
-      }}
-      plugins={[RevealHighlight, RevealNotes]}
-    >
-      {slideManifest.map((entry) => (
-        <entry.render key={entry.id} />
-      ))}
-    </Deck>
+    <DeckThemeContext.Provider value={theme}>
+      <Deck
+        config={{
+          hash: true,
+          controls: true,
+          progress: true,
+          center: false,
+          navigationMode: 'linear',
+          transition: 'slide',
+          transitionSpeed: 'fast',
+          backgroundTransition: 'fade',
+          slideNumber: 'c/t',
+          autoAnimate: false,
+          ...sizeConfig,
+        }}
+        plugins={[RevealHighlight, RevealNotes]}
+      >
+        {slideManifest.map((entry) => (
+          <entry.render key={entry.id} />
+        ))}
+      </Deck>
+    </DeckThemeContext.Provider>
   )
 }

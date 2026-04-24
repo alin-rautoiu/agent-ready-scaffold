@@ -9,6 +9,8 @@ export type QuotedFigureProps = {
   portraitAlt?: string
   portraitSide?: 'right' | 'left'
   showArrow?: boolean
+  quoteReveal?: 'static' | 'fragment'
+  quoteFragmentIndex?: number
   speakerReveal?: 'static' | 'fragment'
   portraitReveal?: 'static' | 'fragment' | 'match-speaker'
   speakerFragmentIndex?: number
@@ -42,7 +44,9 @@ export function QuotedFigure({
   portraitSrc,
   portraitAlt = '',
   portraitSide = 'right',
-  showArrow,
+  showArrow = false,
+  quoteReveal = 'static',
+  quoteFragmentIndex,
   speakerReveal = 'fragment',
   portraitReveal = 'match-speaker',
   speakerFragmentIndex,
@@ -51,7 +55,6 @@ export function QuotedFigure({
   style,
 }: QuotedFigureProps) {
   const hasAttribution = Boolean(speaker) || Boolean(source)
-  const resolvedArrow = showArrow ?? Boolean(portraitSrc)
   const resolvedPortraitReveal: FragmentMode =
     portraitReveal === 'match-speaker'
       ? speakerReveal === 'fragment'
@@ -71,12 +74,15 @@ export function QuotedFigure({
 
   return (
     <figure className={figureClassName} style={style}>
-      <blockquote className="quoted-figure__quote">
-        <div className="quoted-figure__quote-body">{quote}</div>
-      </blockquote>
-
-      {resolvedArrow ? <div className="quoted-figure__arrow" aria-hidden="true" /> : null}
-
+      <div className='quoted-figure__portrait-wrapper'>
+      {withOptionalFragment(
+        <blockquote className="quoted-figure__quote">
+          <div className="quoted-figure__quote-body">{quote}</div>
+        </blockquote>,
+        quoteReveal,
+        quoteFragmentIndex,
+      )}
+      
       {hasAttribution
         ? withOptionalFragment(
             <figcaption className="quoted-figure__caption">
@@ -87,6 +93,10 @@ export function QuotedFigure({
             speakerFragmentIndex,
           )
         : null}
+      </div>
+
+      {showArrow ? <div className="quoted-figure__arrow" aria-hidden="true" /> : null}
+
 
       {portraitSrc
         ? withOptionalFragment(
