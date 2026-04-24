@@ -38,10 +38,23 @@ npm run setup:browsers
 ## Planning workflow
 
 - Treat `docs/deck-plan.md` as the deck spec.
-- Start with the Deck Planner workflow when the requested slides are not already planned.
+- Start with the `deck-planner` agent when the requested slides are not already planned.
 - Implement against the relevant slide ids and keep `slides/index.tsx` aligned with the plan.
 - Use `ThemedSlide` for new slide modules so the deck-level theme applies.
-- Route layout, theme, and export changes through review and UX audit.
+- Route layout, theme, and export changes through the `code-review` and `ux-audit` agents.
+
+## Custom Subagents
+
+This project defines specialized subagents in `.gemini/agents/` to handle specific roles in the presentation lifecycle:
+
+- `orchestrator`: Coordinating multi-step presentation delivery and planning.
+- `deck-planner`: Creating and updating the `docs/deck-plan.md` spec.
+- `implementation-lead`: Implementing slide modules and scaffold changes.
+- `code-review`: Reviewing changes for plan alignment and scaffold standards.
+- `ux-audit`: Auditing slide readability, fragment pacing, and theme rendering.
+- `issues-workflow`: Triage and ranking of deck feedback and backlog.
+
+Invoke them using `invoke_agent("<name>", "...")` when following a multi-step workflow or when you need a specialized perspective.
 
 ## Runtime
 
@@ -52,5 +65,5 @@ npm run setup:browsers
 ## References
 
 - See `CLAUDE.md` for the main architecture notes and conventions.
-- See `.gemini/workflows/` for Gemini-adapted agent role instructions.
+- See `.gemini/agents/` for Gemini-adapted agent role instructions.
 - See `.gemini/skills/` for reusable reveal authoring and repo pattern guidance.
