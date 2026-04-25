@@ -1,6 +1,6 @@
 ---
 name: issues-workflow-orchestrator
-description: Use the shared issue workflow runner to generate a ranked backlog or execute a ranked issue subset with an explicit target.
+description: (Gemini) Use the shared issue workflow runner to generate a ranked backlog or execute a ranked issue subset with an explicit target.
 ---
 
 # Issues Workflow Orchestrator

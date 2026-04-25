@@ -1,10 +1,11 @@
 ---
 name: code-review
-description: Specialized in reviewing presentation scaffold changes for bugs, regressions, plan drift, export risks, and missing tests.
+description: (Gemini) Specialized in reviewing presentation scaffold changes for bugs, regressions, plan drift, export risks, and missing tests.
 tools:
   - read_file
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - invoke_agent
 ---

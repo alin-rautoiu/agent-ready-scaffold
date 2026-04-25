@@ -1,3 +1,8 @@
+---
+name: deck-planning
+description: (Gemini) Provides the schema and vocabulary for creating or updating docs/deck-plan.md.
+---
+
 # Deck Planning
 
 `docs/deck-plan.md` is the deck spec that upstreams slide implementation.

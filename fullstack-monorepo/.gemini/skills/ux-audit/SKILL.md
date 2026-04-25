@@ -1,6 +1,6 @@
 ---
 name: ux-audit
-description: Comprehensive UX audit suite for reviewing information hierarchy, navigation, forms, dashboards, and honest UX patterns. Invoke this skill before any UX audit or design review.
+description: (Gemini) Comprehensive UX audit suite for reviewing information hierarchy, navigation, forms, dashboards, and honest UX patterns. Invoke this skill before any UX audit or design review.
 ---
 
 # UX Audit Skill

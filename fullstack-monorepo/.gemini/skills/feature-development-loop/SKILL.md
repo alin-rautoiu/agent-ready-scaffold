@@ -1,6 +1,6 @@
 ---
-name: Feature Development Loop
-description: Analogous workflow to Codex `agent-orchestrator`; use it to coordinate multi-step delivery through implementation, review, triage, and commit decisions.
+name: feature-development-loop
+description: (Gemini) Workflow to coordinate multi-step delivery through implementation, review, triage, and commit decisions.
 ---
 
 # Feature Development Loop

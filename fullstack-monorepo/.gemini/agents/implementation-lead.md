@@ -1,6 +1,6 @@
 ---
 name: implementation-lead
-description: Specialized in implementing scoped technical tasks, writing code, and adding tests. Returns a structured handoff for Code Review and Orchestrator triage.
+description: (Gemini) Use when implementing a scoped task in a full-stack plan, then returning a structured handoff for Code Review and Orchestrator triage.
 tools:
   - read_file
   - write_file

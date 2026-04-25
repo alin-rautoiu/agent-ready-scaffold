@@ -1,12 +1,13 @@
 ---
 name: deck-planner
-description: Specialized in creating or updating docs/deck-plan.md — the human-readable spec for the deck. Runs before any slide implementation work.
+description: (Gemini) Specialized in creating or updating docs/deck-plan.md — the human-readable spec for the deck.
 tools:
   - read_file
   - write_file
   - replace
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - ask_user
 ---

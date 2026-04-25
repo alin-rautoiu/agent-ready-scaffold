@@ -1,6 +1,6 @@
 ---
 name: issues-workflow
-description: Specialized in building a ranked backlog from open issues and executing them in sequence by delegating to the Orchestrator.
+description: (Gemini) Thin wrapper around the shared issue workflow runner for building a ranked backlog or executing ranked issues with an explicit target.
 tools:
   - read_file
   - grep_search

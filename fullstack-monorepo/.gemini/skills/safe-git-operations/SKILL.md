@@ -1,6 +1,6 @@
 ---
-name: Safe Git Operations
-description: Use when creating a single atomic git commit for one completed task, especially when unrelated changes exist in the tree.
+name: safe-git-operations
+description: (Gemini) Use when creating a single atomic git commit for one completed task, especially when unrelated changes exist in the tree.
 ---
 # Safe Git Operations
 

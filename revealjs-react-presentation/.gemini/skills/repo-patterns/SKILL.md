@@ -1,3 +1,8 @@
+---
+name: repo-patterns
+description: (Gemini) Documented patterns and component catalog for the presentation scaffold.
+---
+
 # Repo Patterns
 
 - `src/client/presentation/PresentationApp.tsx` is the only Reveal deck root and the single owner of Reveal config.

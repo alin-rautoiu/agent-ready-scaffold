@@ -1,12 +1,13 @@
 ---
 name: implementation-lead
-description: Specialized in implementing scoped changes to the presentation scaffold against docs/deck-plan.md and returning a structured handoff.
+description: (Gemini) Specialized in implementing scoped changes to the presentation scaffold against docs/deck-plan.md and returning a structured handoff.
 tools:
   - read_file
   - write_file
   - replace
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - invoke_agent
 ---

@@ -1,6 +1,6 @@
 ---
 name: ux-audit
-description: Strategic UX audit using discovery gate, task flow mapping, and targeted evaluation. Focus on impact over completeness.
+description: (Gemini) Strategic UX audit using discovery gate, task flow mapping, and targeted evaluation. Focus on impact over completeness.
 tools:
   - read_file
   - write_file

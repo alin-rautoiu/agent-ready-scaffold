@@ -1,10 +1,11 @@
 ---
 name: issues-workflow
-description: Specialized in turning deck feedback or scaffold backlog items into ranked execution work.
+description: (Gemini) Specialized in turning deck feedback or scaffold backlog items into ranked execution work.
 tools:
   - read_file
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - invoke_agent
 ---

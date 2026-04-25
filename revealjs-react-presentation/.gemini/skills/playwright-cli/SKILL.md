@@ -1,3 +1,8 @@
+---
+name: playwright-cli
+description: (Gemini) Provides guidance on using Playwright for presentation-specific visual regression and export testing.
+---
+
 # Playwright CLI
 
 Use browser automation when a change affects:

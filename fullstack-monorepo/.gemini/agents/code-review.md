@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Specialized in reviewing code changes for bugs, regressions, risks, and missing tests. Returns severity-ranked findings for Orchestrator triage.
+description: (Gemini) Use when reviewing a diff, pull request, branch, or local code changes for bugs, regressions, risks, and missing tests. Produces triage-ready findings.
 tools:
   - read_file
   - grep_search

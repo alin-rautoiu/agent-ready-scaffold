@@ -1,6 +1,6 @@
 ---
 name: dashboard-design-review
-description: Reviews dashboard and data-heavy admin pages for scanability, KPI hierarchy, chart-task fit, and actionability; produces prioritized UI improvements and implementation tasks.
+description: (Gemini) Reviews dashboard and data-heavy admin pages for scanability, KPI hierarchy, chart-task fit, and actionability; produces prioritized UI improvements and implementation tasks.
 ---
 
 # Dashboard Design Review Skill

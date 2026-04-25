@@ -1,10 +1,11 @@
 ---
 name: orchestrator
-description: Specialized in coordinating multi-step presentation delivery. Designs plans, delegates tasks, and triages findings. Use when a presentation task has multiple steps that should be planned, delegated, reviewed, and triaged in sequence.
+description: (Gemini) Specialized in coordinating multi-step presentation delivery. Designs plans, delegates tasks, and triages findings.
 tools:
   - read_file
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - invoke_agent
 ---

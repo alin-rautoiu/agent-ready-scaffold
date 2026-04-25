@@ -1,10 +1,11 @@
 ---
 name: ux-audit
-description: Specialized in auditing the presentation experience. Use when a change affects slide readability, responsive behavior, navigation pacing, per-theme rendering, PDF export, or plan alignment.
+description: (Gemini) Specialized in auditing the presentation experience. Use when a change affects slide readability, responsive behavior, navigation pacing, per-theme rendering, PDF export, or plan alignment.
 tools:
   - read_file
   - grep_search
   - glob
+  - run_shell_command
   - list_directory
   - invoke_agent
 ---

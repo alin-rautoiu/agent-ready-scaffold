@@ -1,6 +1,6 @@
 ---
 name: orchestrator
-description: Specialized in coordinating multi-step technical delivery. Designs plans, delegates tasks, and triages findings. Use when you have a multi-step plan or backlog of tasks.
+description: (Gemini) Use when you have a multi-step plan or backlog of tasks that should be implemented, reviewed, and triaged in sequence.
 tools:
   - read_file
   - grep_search

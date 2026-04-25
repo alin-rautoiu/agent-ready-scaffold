@@ -1,4 +1,4 @@
-# .agents/workflows/
+# .gemini/workflows/
 
 Gemini Code Assist execution recipes. Each file describes a step-by-step workflow for a common multi-step task.
 

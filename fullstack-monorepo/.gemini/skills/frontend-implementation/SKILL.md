@@ -1,6 +1,6 @@
 ---
 name: frontend-implementation
-description: Frontend implementation guidance for this app. Use before coding visible UI, including forms, dashboards, tables, filters, overlays, navigation, layout, microcopy, accessibility, and i18n.
+description: (Gemini) Frontend implementation guidance for this app. Use before coding visible UI, including forms, dashboards, tables, filters, overlays, navigation, layout, microcopy, accessibility, and i18n.
 ---
 
 # Frontend Implementation

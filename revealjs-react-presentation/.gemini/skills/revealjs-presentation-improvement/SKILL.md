@@ -1,3 +1,8 @@
+---
+name: revealjs-presentation-improvement
+description: (Gemini) Visual system, layout patterns, and QA workflow for RevealJS presentation improvement.
+---
+
 # RevealJS Presentation Improvement
 
 - Treat `docs/deck-plan.md` as the spec for what to build.
