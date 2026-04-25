@@ -92,6 +92,7 @@ Gemini Code Assist does not have a checked-in per-agent manifest in this repo an
 
 - Multi-step delivery or backlog execution: read `.claude/agents/orchestrator.md`, then load only the specific `.gemini/skills/` files needed for the task.
 - Direct implementation: read `.claude/agents/implementation-lead.md`.
+- Frontend implementation: read `.gemini/skills/frontend-implementation/SKILL.md` before coding visible UI.
 - Review requests: read `.claude/agents/code-review.md`.
 - UX audits: read `.claude/agents/ux-audit.md`, then load the `.gemini/skills/ux-audit/` skill.
 - Git workflows and careful commits: read `.gemini/skills/safe-git-operations/SKILL.md`.

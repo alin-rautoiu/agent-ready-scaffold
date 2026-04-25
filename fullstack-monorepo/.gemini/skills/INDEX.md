@@ -4,6 +4,7 @@ Use this file to discover the repo's reusable Gemini task playbooks. Load only t
 
 - `dashboard-design-review`: review dashboard information hierarchy and chart/task fit
 - `feature-development-loop`: structured multi-step implementation workflow
+- `frontend-implementation`: frontend implementation guidance for forms, dashboards, layout, and UX
 - `issues-workflow-orchestrator`: ranked backlog and issue execution runner
 - `playwright-cli`: browser automation guidance when Playwright CLI is the chosen tool
 - `safe-git-operations`: task-scoped staging and commit safety
