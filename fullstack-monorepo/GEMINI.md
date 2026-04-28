@@ -78,7 +78,7 @@ Use `.gemini/README.md`, `.gemini/skills/INDEX.md`, and `.gemini/workflows/INDEX
 
 Canonical agent behavior still lives in `.claude/agents/`. When a task maps to one of the shared agent roles, read the matching Claude file and adapt it to Gemini Code Assist's capabilities:
 
-- Orchestrator: `.claude/agents/orchestrator.md`
+- Orchestrator: `.gemini/skills/orchestrator-workflow/SKILL.md` (main-agent workflow delegating to subagents)
 - Implementation Lead: `.claude/agents/implementation-lead.md`
 - Code Review: `.claude/agents/code-review.md`
 - Atomic Commit: `.claude/agents/atomic-commit.md`
@@ -90,7 +90,7 @@ Gemini Code Assist does not have a checked-in per-agent manifest in this repo an
 
 ## Task Routing
 
-- Multi-step delivery or backlog execution: read `.claude/agents/orchestrator.md`, then load only the specific `.gemini/skills/` files needed for the task.
+- Multi-step delivery or backlog execution: load `.gemini/skills/orchestrator-workflow/SKILL.md` and follow its steps.
 - Direct implementation: read `.claude/agents/implementation-lead.md`.
 - Frontend implementation: read `.gemini/skills/frontend-implementation/SKILL.md` before coding visible UI.
 - Review requests: read `.claude/agents/code-review.md`.
@@ -105,13 +105,14 @@ Do not bulk-read every skill file. Load only the files that match the task.
 
 This project defines specialized subagents in `.gemini/agents/` to handle specific roles in the development lifecycle:
 
-- `orchestrator`: Coordinating multi-step technical delivery and planning.
 - `implementation-lead`: Implementing scoped technical tasks and adding tests.
 - `code-review`: Reviewing code changes for bugs, regressions, and risks.
 - `ux-audit`: Strategic UX evaluation of workflows and pages.
 - `issues-workflow`: Backlog management and ranked issue execution.
 
 Invoke them using `invoke_agent("<name>", "...")` when following the `feature-development-loop` skill or when you need a specialized perspective.
+
+For multi-step orchestration (discovery → plan → task loop → review → triage → commit), load `.gemini/skills/orchestrator-workflow/SKILL.md` — it coordinates the loop by delegating to specialized subagents.
 
 ## Tooling Notes
 

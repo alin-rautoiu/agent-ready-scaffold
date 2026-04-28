@@ -8,5 +8,6 @@ Use this file to discover the repo's reusable Gemini task playbooks. Load only t
 - `issues-workflow-orchestrator`: ranked backlog and issue execution runner
 - `playwright-cli`: browser automation guidance when Playwright CLI is the chosen tool
 - `safe-git-operations`: task-scoped staging and commit safety
+- `orchestrator-workflow`: main-agent multi-step delivery workflow — delegates discovery, implementation, and review to specialized subagents
 - `ux-audit`: comprehensive UX audit suite (dashboards, forms, navigation, honest UX, etc.)
 <!-- TODO: add project-specific skills here as they are created -->

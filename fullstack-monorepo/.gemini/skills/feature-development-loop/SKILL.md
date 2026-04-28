@@ -27,7 +27,7 @@ When posting multi-line GitHub comments or close messages, do not pass long bodi
 - Use `invoke_agent("code-review", ...)` for all review tasks when the triggers are met.
 - Invoke review only when the task meets the triggers in the Loop section — not after every task.
 - Do not advance with blocking findings unresolved.
-- Before making any code changes, use `invoke_agent("orchestrator", ...)` or the `codebase_investigator` to map the feature area.
+- Before making any code changes, load the `orchestrator-workflow` skill to map the feature area and propose a plan.
 - Propose an implementation plan and wait for user approval before delegating implementation.
 
 ## Worktree Isolation
@@ -43,7 +43,7 @@ Before starting discovery, isolate the task in a dedicated git branch.
 
 ## Preflight
 
-1. Map the feature area first. You can use the `orchestrator` subagent to help design the plan: `invoke_agent("orchestrator", "Map the feature area and propose an implementation plan for <task description>")`.
+1. Map the feature area first. Load the `orchestrator-workflow` skill and follow its Step 1 (Discover and propose) to design the plan.
 2. Collect:
    - Relevant files and modules in scope
    - Relationships and data/call flow between files
