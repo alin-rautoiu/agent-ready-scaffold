@@ -7,6 +7,7 @@ OpenCode agent configuration. This directory holds OpenCode-format agent definit
 | Directory | Purpose |
 | --- | --- |
 | `agents/` | Named sub-agent definitions loaded via the Task tool |
+| `tools/` | Custom OpenCode plugin tools (e.g. worktree lifecycle management) |
 
 ## Runtime context
 
@@ -24,6 +25,7 @@ Key differences from Claude Code:
 - **Sub-agents:** Invoked via the `Task` tool; each agent's available sub-agents are listed under `task:` in the permission block
 - No persistent CLAUDE.md equivalent — agent definitions and repo context must be self-contained
 - No `skills/`, `commands/`, or `hooks/` directories — agent definitions are the primary configuration surface
+- Custom `tools/` may be provided as OpenCode plugin tools (e.g. worktree lifecycle management)
 
 ## Rules
 

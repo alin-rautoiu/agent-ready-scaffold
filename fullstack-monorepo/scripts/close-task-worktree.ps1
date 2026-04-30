@@ -1,7 +1,9 @@
 param(
   [string]$TaskId = '',
+  [string]$BaseBranch = 'main',
   [switch]$DeleteDb,
   [switch]$Merge,
+  [switch]$ForceRemove,
   [switch]$Help
 )
 
@@ -9,11 +11,19 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 if ($Help) {
-  Write-Host 'Usage: close-task-worktree.ps1 -TaskId <slug> [-Merge] [-DeleteDb]'
+  Write-Host 'Usage: close-task-worktree.ps1 -TaskId <slug> [-BaseBranch <branch>] [-Merge] [-DeleteDb] [-ForceRemove]'
+  Write-Host ''
+  Write-Host '  -BaseBranch'
+  Write-Host '             The expected branch in the main repository to merge into.'
+  Write-Host '             Defaults to "main".'
   Write-Host ''
   Write-Host '  -Merge     Fast-forward merge task/<slug> into the current branch before'
   Write-Host '             removing the worktree. Fails if the working tree is dirty or'
   Write-Host '             if the merge is not a fast-forward.'
+  Write-Host ''
+  Write-Host '  -ForceRemove'
+  Write-Host '             Pass --force to git worktree remove after all safety checks pass.'
+  Write-Host '             This does not bypass dirty-worktree or unmerged-branch checks.'
   Write-Host ''
   Write-Host 'Example: close-task-worktree.ps1 -TaskId issue-218 -Merge'
   exit 0
@@ -41,6 +51,47 @@ if (-not (Test-Path $worktreeDir)) {
   throw "Worktree directory does not exist: $worktreeDir"
 }
 
+$actualWorktreeRoot = (git -C $worktreeDir rev-parse --show-toplevel)
+if ($LASTEXITCODE -ne 0) {
+  throw "Could not inspect worktree root: $worktreeDir"
+}
+
+$actualWorktreeRoot = (Resolve-Path $actualWorktreeRoot).Path
+$expectedWorktreeRoot = (Resolve-Path $worktreeDir).Path
+if ($actualWorktreeRoot -ne $expectedWorktreeRoot) {
+  throw "Refusing to close unexpected worktree. Expected $expectedWorktreeRoot, got $actualWorktreeRoot"
+}
+
+$taskBranch = (git -C $worktreeDir branch --show-current)
+if ($LASTEXITCODE -ne 0) {
+  throw "Could not inspect current branch in $worktreeDir"
+}
+
+if ($taskBranch -ne $branch) {
+  if (-not $taskBranch) {
+    throw "Refusing to close $worktreeDir because it is in detached HEAD state. Expected branch $branch."
+  }
+  throw "Refusing to close $worktreeDir because it is on $taskBranch. Expected branch $branch."
+}
+
+$branchRef = 'refs/heads/' + $branch
+git -C $repoRoot show-ref --verify --quiet $branchRef
+if ($LASTEXITCODE -ne 0) {
+  throw "Branch $branch does not exist."
+}
+
+$taskStatus = git -C $worktreeDir status --porcelain
+if ($LASTEXITCODE -ne 0) {
+  throw "Could not inspect task worktree status."
+}
+
+if ($taskStatus) {
+  throw (
+    "Task worktree is dirty. Commit or discard changes before closing:`n" +
+    ($taskStatus -join "`n")
+  )
+}
+
 # --- Optional merge before teardown ---
 if ($Merge) {
   # Refuse if main working tree is dirty (uncommitted changes or staged files)
@@ -55,7 +106,7 @@ if ($Merge) {
   # Verify main is on the expected base branch (not detached, not on the task branch)
   $currentBranch = git -C $repoRoot rev-parse --abbrev-ref HEAD
   if ($currentBranch -eq $branch) {
-    throw "Main working tree is on $branch — switch to main (or the integration branch) before merging."
+    throw "Main working tree is on $branch - switch to main (or the integration branch) before merging."
   }
 
   Write-Host "Merging $branch into $currentBranch (fast-forward only)..."
@@ -67,6 +118,15 @@ if ($Merge) {
     )
   }
   Write-Host "Merged $branch -> $currentBranch"
+} else {
+  $mergedBranch = git -C $repoRoot branch --merged HEAD --list $branch
+  if ($LASTEXITCODE -ne 0) {
+    throw "Failed to check whether $branch is merged into the current branch."
+  }
+
+  if (-not $mergedBranch) {
+    throw "Refusing to remove unmerged branch $branch. Merge it first or rerun with -Merge."
+  }
 }
 
 if ($DeleteDb) {
@@ -84,12 +144,22 @@ if ($DeleteDb) {
 
 $targetNodeModules = Join-Path $worktreeDir 'node_modules'
 if (Test-Path -LiteralPath $targetNodeModules) {
-  # Remove-Item without -Recurse removes a directory junction without deleting the linked content.
-  # cmd /c rd fails silently on junctions that appear non-empty; avoid it.
-  Remove-Item -LiteralPath $targetNodeModules
+  Write-Host "Removing node_modules junction..."
+  $isJunction = (Get-Item -LiteralPath $targetNodeModules).Attributes -match "ReparsePoint"
+  if ($isJunction) {
+    # Use cmd /c rmdir to avoid PowerShell's Remove-Item NullReferenceException with junctions
+    & cmd /c rmdir $targetNodeModules
+  } else {
+    Write-Host "Warning: $targetNodeModules is not a junction. Skipping automatic removal to protect root node_modules."
+  }
 }
 
-git -C $repoRoot worktree remove $worktreeDir --force
+$removeArgs = @('-C', $repoRoot, 'worktree', 'remove', $worktreeDir)
+if ($ForceRemove) {
+  $removeArgs += '--force'
+}
+
+& git @removeArgs
 if ($LASTEXITCODE -ne 0) {
   throw 'git worktree remove failed.'
 }

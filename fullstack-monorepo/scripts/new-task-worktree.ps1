@@ -1,6 +1,7 @@
 param(
   [string]$TaskId = '',
   [string]$BaseBranch = 'main',
+  [switch]$Migrate,
   [switch]$OpenVSCode,
   [switch]$Help
 )
@@ -9,8 +10,8 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 if ($Help) {
-  Write-Host 'Usage: new-task-worktree.ps1 -TaskId <slug> [-BaseBranch <branch>] [-OpenVSCode]'
-  Write-Host 'Example: new-task-worktree.ps1 -TaskId issue-218 -BaseBranch main -OpenVSCode'
+  Write-Host 'Usage: new-task-worktree.ps1 -TaskId <slug> [-BaseBranch <branch>] [-Migrate] [-OpenVSCode]'
+  Write-Host 'Example: new-task-worktree.ps1 -TaskId issue-218 -BaseBranch main -Migrate -OpenVSCode'
   exit 0
 }
 
@@ -70,7 +71,7 @@ if (-not (Test-Path $sourceEnv)) {
 $targetEnv = Join-Path $worktreeDir '.env'
 Copy-Item -Path $sourceEnv -Destination $targetEnv -Force
 
-$envLines = Get-Content -Path $targetEnv
+$envLines = Get-Content -Path $targetEnv -Encoding utf8
 $mainDataDir = Join-Path $repoRoot 'data'
 if (-not (Test-Path $mainDataDir)) {
   New-Item -ItemType Directory -Path $mainDataDir | Out-Null
@@ -91,7 +92,7 @@ if (-not $hasDatabasePath) {
   $envLines += $databasePathLine
 }
 
-Set-Content -Path $targetEnv -Value $envLines
+Set-Content -Path $targetEnv -Value $envLines -Encoding utf8
 
 Write-Host ''
 Write-Host ('Worktree created: ' + $worktreeDir)
@@ -102,6 +103,17 @@ Write-Host 'Next steps:'
 Write-Host ('1) cd "' + $worktreeDir + '"')
 Write-Host '2) npm run db:migrate'
 Write-Host '3) npm run dev'
+
+if ($Migrate) {
+  Write-Host 'Running database migration...'
+  $originalDir = Get-Location
+  try {
+    Set-Location $worktreeDir
+    npm run db:migrate
+  } finally {
+    Set-Location $originalDir
+  }
+}
 
 if ($OpenVSCode) {
   code $worktreeDir
