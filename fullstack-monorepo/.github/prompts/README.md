@@ -1,26 +1,28 @@
 # .github/prompts/
 
-GitHub Copilot context files. These files provide repository-level context that Copilot loads automatically when working in this repository.
+GitHub Copilot prompt files (slash commands). These files are invoked on demand from chat and are best for focused, repeatable tasks.
 
 ## What goes here
 
-Markdown files that describe the repository to Copilot: its purpose, conventions, and key patterns. Think of these as a lightweight `CLAUDE.md` for the Copilot surface.
+Markdown files with `.prompt.md` extension and optional YAML frontmatter (`name`, `description`, `argument-hint`, `agent`, `model`, `tools`).
 
-Typical contents:
+Typical uses:
 
-- Repository overview and technology stack
-- Key architectural decisions (thin routes, service extraction)
-- File naming conventions
-- Links to agent definitions and skill files
+- Reusable review/checklist workflows
+- Scaffolding prompts for common tasks
+- Operational runbooks that benefit from user-provided arguments
+- Prompt wrappers that delegate to a custom agent
 
 ## What does NOT go here
 
-- Detailed task-specific guidance — that belongs in `agents/` or `.claude/skills/`
-- Content that duplicates `CLAUDE.md` verbatim — maintain one source, reference the other
-- Temporary notes or session context
+- Always-on conventions (put those in `.github/copilot-instructions.md`)
+- Persistent persona/tool boundaries (put those in `.github/agents/`)
+- Portable capability packages with resources/scripts (put those in `.github/skills/`)
 
 ## Rules
 
-**Do** keep prompt files focused on stable, high-level context. This content is loaded on every Copilot interaction; bloated prompt files increase cost and dilute relevance.
+**Do** keep prompts single-purpose and explicit about inputs/outputs.
 
-**Don't** use prompt files as a substitute for agent definitions. Prompts inform; agents act. If you find yourself writing step-by-step instructions in a prompt file, move the logic to `agents/`.
+**Do** delegate to a named custom agent with the `agent` frontmatter key when a workflow depends on that persona.
+
+**Don't** duplicate agent behavior in a prompt body. Prompts should orchestrate or parameterize, not replace agent definitions.

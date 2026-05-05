@@ -1,14 +1,8 @@
 ---
 name: Issue Close Sweep
 description: "Review open remote issues that have associated commits: run a code review for each, close if clean, comment blockers if not, and create follow-up issues for newly found problems."
-agent: agent
+agent: Issues Workflow
 argument-hint: "Optional: specific issue numbers to sweep (e.g. '284 300 304'), or omit to sweep all open issues"
-tools:
-  - execute
-  - read
-  - search
-  - edit
-  - agent
 ---
 
 # Issue Close Sweep

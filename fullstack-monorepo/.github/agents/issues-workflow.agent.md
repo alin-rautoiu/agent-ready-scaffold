@@ -1,7 +1,12 @@
 ---
 name: Issues Workflow
 description: (Copilot) Build a ranked backlog from open issues, or execute a ranked subset of issues by delegating to the Orchestrator in sequence.
-tools: [execute/runNotebookCell, execute/testFailure, execute/getTerminalOutput, execute/awaitTerminal, execute/killTerminal, execute/createAndRunTask, execute/runInTerminal, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/terminalSelection, read/terminalLastCommand, agent/runSubagent, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/searchResults, search/textSearch, search/usages]
+tools:
+  - agent
+  - read
+  - search
+  - execute
+  - github/*
 agents:
   - Orchestrator
 target: vscode
